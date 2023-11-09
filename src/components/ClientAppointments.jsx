@@ -82,7 +82,7 @@ function ClientAppointments({ appointments, id }) {
     <div className="appointment_container">
       <div>
         <div className="appointment-main">
-          <div>Upcoming Appointments</div>
+          <div className="app-title">Upcoming Appointments</div>
           <div>
             <Chip
               label={`${addAppointment ? "CLOSE" : "ADD"}`}

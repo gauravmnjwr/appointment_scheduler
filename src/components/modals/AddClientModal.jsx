@@ -127,7 +127,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
           }}
         />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DemoItem label="Select Date">
+          <DemoItem label="Select Appointment Date">
             <MobileDateTimePicker
               defaultValue={dayjs(new Date())}
               value={userData.appointmentDateTimes}

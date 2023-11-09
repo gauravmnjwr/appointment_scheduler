@@ -5,6 +5,7 @@
 body {
   background-color: #0f0617;
   color: white;
+  font-family: sans-serif;
 }
 
 .client_userdetails img {
@@ -35,6 +36,14 @@ body {
   display: flex;
   align-items: center;
   column-gap: 10px;
+}
+
+.app-title {
+  font-size: 13px;
+}
+.appointment_container button {
+  background-color: #d3925d1f;
+  border: 1px solid #ed6c02;
 }
 
 .appointment-add-datetimepicker {
@@ -146,9 +155,4 @@ input:focus {
   .client-card {
     width: 100vw !important;
   }
-}
-
-.appointment_container button {
-  background-color: #d3925d1f;
-  border: 1px solid #ed6c02;
 }

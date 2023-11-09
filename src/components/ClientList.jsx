@@ -70,7 +70,8 @@ function ClientList({ clients }) {
   //DELETE Client Function
   const handleDeleteClient = (clientId) => {
     Swal.fire({
-      title: "Are you sure you want to delete this Client?",
+      title:
+        "Are you sure you wish to remove this client and all associated appointments?",
       text: "You won't be able to revert this!",
       icon: "warning",
       showCancelButton: true,
