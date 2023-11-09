@@ -7,9 +7,6 @@ import {
   updateClient,
   createClient,
   removeClient,
-  createAppointment,
-  updateAppointment,
-  removeAppointment,
 } from "../redux/slices/clientsSlice";
 import { useDispatch } from "react-redux";
 import Swal from "sweetalert2";
@@ -26,6 +23,11 @@ function ClientList({ clients }) {
 
   const dispatch = useDispatch();
 
+  //For Modal Closing
+  const onClose = () => {
+    setOpen(false);
+  };
+  //ADD client Function
   const onAddClient = (data) => {
     const renderedData = data.userData;
     renderedData.appointmentDateTimes = [
@@ -41,11 +43,8 @@ function ClientList({ clients }) {
     });
   };
 
-  const onClose = () => {
-    setOpen(false);
-  };
-
-  const handleEditClient = (clientId) => {
+  //Saving Previous data values for editing
+  const handleEditData = (clientId) => {
     setEditedClientId(clientId);
     const clientToEdit = clients.find((client) => client.id === clientId);
     setEditedUserDetails({
@@ -55,6 +54,20 @@ function ClientList({ clients }) {
     });
   };
 
+  //UPDATE Client Function
+  const handleEditClient = () => {
+    dispatch(updateClient({ id: editedClientId, data: editedUserDetails }));
+    showToastSuccessMessage("Client Details Updated Successfully");
+
+    setEditedUserDetails({
+      firstName: "",
+      lastName: "",
+      location: "",
+    });
+    setEditedClientId(null);
+  };
+
+  //DELETE Client Function
   const handleDeleteClient = (clientId) => {
     Swal.fire({
       title: "Are you sure you want to delete this Client?",
@@ -77,39 +90,10 @@ function ClientList({ clients }) {
     });
   };
 
-  const handleSaveClient = () => {
-    dispatch(updateClient({ id: editedClientId, data: editedUserDetails }));
-    showToastSuccessMessage("Client Details Updated Successfully");
-
-    setEditedUserDetails({
-      firstName: "",
-      lastName: "",
-      location: "",
-    });
-    setEditedClientId(null);
-  };
-
-  const getNewAppointment = (id, appointmentDateTimes) => {
-    dispatch(createAppointment({ id, appointment: appointmentDateTimes }));
-  };
-
-  const getEditedAppointment = (id, appointmentId, editAppointment) => {
-    dispatch(
-      updateAppointment({
-        clientId: id,
-        appointmentId,
-        newAppointment: editAppointment,
-      })
-    );
-  };
-  const getDeleteAppointment = (clientId, appointmentId) => {
-    dispatch(removeAppointment({ clientId, appointmentIndex: appointmentId }));
-  };
-
   return (
     <div>
       <button className="add-client-btn" onClick={() => setOpen(!open)}>
-        Add Client
+        ADD CLIENT
       </button>
       <div>
         <div className="client_list">
@@ -158,7 +142,7 @@ function ClientList({ clients }) {
                             placeholder="Location"
                           />
                         </div>
-                        <button onClick={handleSaveClient}>Save</button>
+                        <button onClick={handleEditClient}>Save</button>
                         <button onClick={() => setEditedClientId(null)}>
                           Cancel
                         </button>
@@ -173,7 +157,7 @@ function ClientList({ clients }) {
                             <img
                               src="./images/edit.png"
                               alt="Edit"
-                              onClick={() => handleEditClient(e.id)}
+                              onClick={() => handleEditData(e.id)}
                             />
                             <img
                               src="./images/delete.png"
@@ -190,9 +174,6 @@ function ClientList({ clients }) {
                 <ClientAppointments
                   id={e.id}
                   appointments={e.appointmentDateTimes}
-                  getNewAppointment={getNewAppointment}
-                  getEditedAppointment={getEditedAppointment}
-                  getDeleteAppointment={getDeleteAppointment}
                 />
               </div>
             );

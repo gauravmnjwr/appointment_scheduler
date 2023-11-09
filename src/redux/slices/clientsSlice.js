@@ -24,9 +24,11 @@ const clientsSlice = createSlice({
   name: "clients",
   initialState,
   reducers: {
+    //For creating Client
     createClient: (state, action) => {
       state.clients.push(action.payload);
     },
+    //Reducer Fn for updating Client
     updateClient: (state, action) => {
       const { id, data } = action.payload;
       const { firstName, lastName, location } = data;
@@ -41,10 +43,13 @@ const clientsSlice = createSlice({
         state.clients[clientIndex] = updatedClient;
       }
     },
+    //Reducer Fn for deleting Client
     removeClient: (state, action) => {
       const { clientId } = action.payload;
       state.clients = state.clients.filter((client) => client.id !== clientId);
     },
+
+    //Reducer Fn for Creating Appointment
     createAppointment: (state, action) => {
       const { id, appointment } = action.payload;
       const client = state.clients.find((client) => client.id === id);
@@ -52,6 +57,7 @@ const clientsSlice = createSlice({
         client.appointmentDateTimes.push(appointment);
       }
     },
+    //Reducer Fn for Editing Appointment
     updateAppointment: (state, action) => {
       const { clientId, appointmentId, newAppointment } = action.payload;
       const client = state.clients.find((client) => client.id === clientId);
@@ -59,6 +65,7 @@ const clientsSlice = createSlice({
         client.appointmentDateTimes[appointmentId] = newAppointment;
       }
     },
+    //Reducer Fn for Deleting Appointment
     removeAppointment: (state, action) => {
       const { clientId, appointmentIndex } = action.payload;
       const client = state.clients.find((client) => client.id === clientId);
@@ -71,9 +78,6 @@ const clientsSlice = createSlice({
         }
       }
     },
-    abcd: (state, action) => {
-      console.log(action.payload);
-    },
   },
 });
 
@@ -84,7 +88,6 @@ export const {
   createAppointment,
   updateAppointment,
   removeAppointment,
-  abcd,
 } = clientsSlice.actions;
 
 export default clientsSlice.reducer;

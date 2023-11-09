@@ -142,7 +142,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
                 borderRadius: "8px",
                 border: "1px solid white",
               }}
-              format="DD/MM/YYYY hh:MM:ss"
+              format="DD/MM/YYYY hh:mm:ss"
             />
           </DemoItem>
         </LocalizationProvider>

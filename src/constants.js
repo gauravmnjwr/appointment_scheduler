@@ -1,6 +1,7 @@
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+//Generating Random ID for Client
 export function generateRandomId() {
   const timestamp = new Date().getTime(); // Get a unique timestamp
   const random = Math.random().toString(36).substr(2, 9); // Generate a random string
@@ -9,15 +10,16 @@ export function generateRandomId() {
   return randomId;
 }
 
+//Get Formatted Date and Time
 export function formatDateTime(dateTimeString) {
   const dateTime = new Date(dateTimeString);
 
   const year = dateTime.getFullYear();
-  const month = String(dateTime.getMonth() + 1).padStart(2, "0"); // Zero-padding for months
-  const day = String(dateTime.getDate()).padStart(2, "0"); // Zero-padding for days
+  const month = String(dateTime.getMonth() + 1).padStart(2, "0");
+  const day = String(dateTime.getDate()).padStart(2, "0");
 
-  const hours = String(dateTime.getHours()).padStart(2, "0"); // Zero-padding for hours
-  const minutes = String(dateTime.getMinutes()).padStart(2, "0"); // Zero-padding for minutes
+  const hours = String(dateTime.getHours()).padStart(2, "0");
+  const minutes = String(dateTime.getMinutes()).padStart(2, "0");
 
   const formattedDate = `${day}/${month}/${year}`;
   const formattedTime = `${hours}:${minutes}`;
@@ -25,18 +27,21 @@ export function formatDateTime(dateTimeString) {
   return { date: formattedDate, time: formattedTime };
 }
 
+//Show Success Message
 export const showToastSuccessMessage = (message) => {
   toast.success(message, {
     position: toast.POSITION.TOP_RIGHT,
   });
 };
 
+//Show Danger Message
 export const showToastDangerMessage = (message) => {
   toast.error(message, {
     position: toast.POSITION.TOP_RIGHT,
   });
 };
 
+//Generate events based on start event and end event for Calender
 export const generateEvents = (clients) => {
   let transformedAppointments = [];
 

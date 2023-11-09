@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-
 const localizer = momentLocalizer(moment);
 
 const CalendarModal = ({ open, onClose, events }) => {
