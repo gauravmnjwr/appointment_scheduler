@@ -40,6 +40,12 @@ After completing the installation steps, you can start the development server:
 npm start
 ```
 
+OR 
+
+```bash
+npm run start
+```
+
 Visit [http://localhost:3000](http://localhost:3000) in your web browser to access the Fitness Trainer Appointment Scheduling Website.
 
 ## Project Structure
