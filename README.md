@@ -58,6 +58,7 @@ The application provides the following functionality:
 - Add, edit, and delete clients to create appointments.
 - Add, edit, and delete appointments for clients.
 - Inline editing of client information (First Name, Last Name, and Location).
+- Inline editing of client appointments (Date and Time).
 - Informative error messages and notifications for successful actions.
 - Calendar page for viewing scheduled appointments.
 
