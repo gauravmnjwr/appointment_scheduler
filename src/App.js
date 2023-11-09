@@ -17,17 +17,17 @@ function App() {
   const events = generateEvents(clients);
   return (
     <div className="app">
-      <div>
+      <div className="app-heading">
         <h1>Fitness Trainer Appointment Scheduling</h1>
-        <div
+        <button
           onClick={() => {
             setOpen(true);
           }}
         >
-          Calender
-        </div>
+          {open ? "Close" : "Show"} Calendar
+          <img src="./images/calender.png" alt="" />
+        </button>
       </div>
-      {}
       <ClientList clients={clients} />
       <CalendarModal open={open} onClose={onClose} events={events} />
     </div>

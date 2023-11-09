@@ -66,7 +66,7 @@ body {
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 24px 28px;
-  color: white !important;
+  color: white;
 }
 
 .client_basicdetails {
@@ -85,12 +85,16 @@ body {
 .client_basicdetails .loc {
   font-size: 15px;
   font-family: sans-serif;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 div .basic div:nth-child(1) {
   font-size: 38px;
   text-transform: uppercase;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 
 div .basic div:nth-child(2) {
@@ -111,7 +115,7 @@ div .basic div:nth-child(2) {
 }
 
 button {
-  background-color: rgba(255, 255, 255, 0.856);
+  background-color: #347aca;
   height: 40px;
   border-radius: 8px;
   padding: 0px 10px;
@@ -119,10 +123,11 @@ button {
   cursor: pointer;
   font-weight: 600;
   border: 0px;
+  color: white;
 }
 
 button:hover {
-  background-color: #0f06171f;
+  background-color: rgb(8, 101, 207);
   border: 1px solid white;
   color: white;
 }
@@ -141,13 +146,20 @@ input:focus {
 }
 
 .addClient-btn {
-  background-color: rgba(255, 255, 255, 0.767) !important;
+  background-color: #4741fc !important;
   margin-top: 10px !important;
-  color: black !important;
+  color: white !important;
 }
 
 .error {
   font-size: 12px;
   margin: 10px !important;
   color: black;
+}
+
+@media screen and (max-width: 250px) {
+  .client-card {
+    width: 100vw !important;
+    /* background-color: aliceblue; */
+  }
 }

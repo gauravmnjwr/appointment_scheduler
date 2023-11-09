@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddClientModal from "./AddClientModal";
+import AddClientModal from "./modals/AddClientModal";
 import ClientAppointments from "./ClientAppointments";
 import { generateRandomId } from "../constants";
 import "./styles.css";
@@ -34,6 +34,11 @@ function ClientList({ clients }) {
     renderedData.id = generateRandomId();
 
     dispatch(createClient(renderedData));
+    Swal.fire({
+      title: "Success!",
+      text: "Client Added Successfully!",
+      icon: "success",
+    });
   };
 
   const onClose = () => {
@@ -103,7 +108,9 @@ function ClientList({ clients }) {
 
   return (
     <div>
-      <button onClick={() => setOpen(!open)}>Add Client</button>
+      <button className="add-client-btn" onClick={() => setOpen(!open)}>
+        Add Client
+      </button>
       <div>
         <div className="client_list">
           {clients.map((e) => {

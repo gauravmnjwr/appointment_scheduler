@@ -6,7 +6,6 @@ import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import "./styles.css";
 import Swal from "sweetalert2";
 
 function ClientAppointments({
@@ -16,34 +15,26 @@ function ClientAppointments({
   getEditedAppointment,
   getDeleteAppointment,
 }) {
-  const [editAppointment, setEditAppointment] = useState("");
-  const [editedAppointmentIndex, setEditedAppointmentIndex] = useState(null);
-  const [addAppointment, setAddAppointment] = useState(false);
-  const [appointment, setAppointment] = useState(dayjs(new Date()));
+  const [editIndex, setEditIndex] = useState(null);
+  const [isAdding, setAdding] = useState(false);
+  const [selectedDateTime, setSelectedDateTime] = useState(dayjs(new Date()));
 
-  const handleAppointmentChange = (appointmentIndex) => {
-    setEditedAppointmentIndex(appointmentIndex);
-  };
-  const color = "white";
-
-  const handleAppointmentAdd = (call) => {
-    if (call === "Add") {
-      getNewAppointment(id, appointment);
+  const handleAppointmentAction = (action, index) => {
+    if (action === "Add") {
+      getNewAppointment(id, selectedDateTime);
       showToastSuccessMessage("Appointment Added Successfully");
+    } else if (action === "Edit") {
+      getEditedAppointment(id, index, selectedDateTime);
+      showToastSuccessMessage("Appointment Updated Successfully");
+    } else if (action === "Delete") {
+      handleDeleteAppointment(index);
     }
-    setAddAppointment(false);
-    setAppointment(dayjs(new Date()));
+    setEditIndex(null);
+    setAdding(false);
+    setSelectedDateTime(dayjs(new Date()));
   };
 
-  const handleAppointmentEdit = (appointmentId) => {
-    if (editAppointment) {
-      getEditedAppointment(id, appointmentId, editAppointment);
-    }
-    setEditedAppointmentIndex(null);
-    showToastSuccessMessage("Appointment Updated Successfully");
-  };
-
-  const handleAppointmentDelete = (appointmentId) => {
+  const handleDeleteAppointment = (index) => {
     Swal.fire({
       title: "Are you sure you want to delete this appointment?",
       text: "You won't be able to revert this!",
@@ -54,7 +45,7 @@ function ClientAppointments({
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        getDeleteAppointment(id, appointmentId);
+        getDeleteAppointment(id, index);
 
         Swal.fire({
           title: "Deleted!",
@@ -72,81 +63,76 @@ function ClientAppointments({
           <div>Upcoming Appointments</div>
           <div>
             <Chip
-              label={`${addAppointment ? "CLOSE" : "ADD"}`}
+              label={`${isAdding ? "CLOSE" : "ADD"}`}
               color="primary"
-              onClick={() => setAddAppointment(!addAppointment)}
+              onClick={() => setAdding(!isAdding)}
             />
           </div>
         </div>
-        {appointments.map((k, i) => {
-          return (
-            <div key={k.id} className="appointment-container">
-              {editedAppointmentIndex === i ? (
-                <div className="appointment-add-datetimepicker">
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <MobileDateTimePicker
-                      defaultValue={dayjs(k)}
-                      onChange={(e) => {
-                        setEditAppointment(e);
-                      }}
-                      sx={{
-                        svg: { color },
-                        input: { color },
-                        label: { color },
-                        border: "1px solid white",
-                        borderRadius: "8px",
-                        margin: "10px",
-                      }}
+        {appointments.map((k, i) => (
+          <div key={k.id} className="appointment-container">
+            {editIndex === i ? (
+              <div className="appointment-add-datetimepicker">
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <MobileDateTimePicker
+                    defaultValue={dayjs(k)}
+                    onChange={(e) => setSelectedDateTime(e)}
+                    sx={{
+                      svg: { color: "white" },
+                      input: { color: "white" },
+                      label: { color: "white" },
+                      border: "1px solid white",
+                      borderRadius: "8px",
+                      margin: "10px",
+                    }}
+                    format="DD/MM/YYYY hh:MM:ss"
+                  />
+                </LocalizationProvider>
+                <button onClick={() => handleAppointmentAction("Edit", i)}>
+                  Add
+                </button>
+                <button onClick={() => setEditIndex(null)}>Cancel</button>
+              </div>
+            ) : (
+              <div>
+                <Stack direction="row" spacing={1} margin={1}>
+                  <Chip
+                    label={formatDateTime(k).date}
+                    variant="outlined"
+                    color="warning"
+                  />
+                  <Chip
+                    label={formatDateTime(k).time}
+                    variant="outlined"
+                    color="warning"
+                  />
+                  <div className="appointment-edit-img">
+                    <img
+                      src="./images/edit.png"
+                      alt="Edit"
+                      onClick={() => setEditIndex(i)}
                     />
-                  </LocalizationProvider>
-                  <button onClick={() => handleAppointmentEdit(i)}>Add</button>
-                  <button onClick={() => setEditedAppointmentIndex(null)}>
-                    Cancel
-                  </button>
-                </div>
-              ) : (
-                <div>
-                  <Stack direction="row" spacing={1} margin={1}>
-                    <Chip
-                      label={formatDateTime(k).date}
-                      variant="outlined"
-                      color="warning"
+                    <img
+                      src="./images/delete.png"
+                      alt="Edit"
+                      onClick={() => handleAppointmentAction("Delete", i)}
                     />
-                    <Chip
-                      label={formatDateTime(k).time}
-                      variant="outlined"
-                      color="warning"
-                    />
-                    <div className="appointment-edit-img">
-                      <img
-                        src="./images/edit.png"
-                        alt="Edit"
-                        onClick={() => handleAppointmentChange(i)}
-                      />
-                      <img
-                        src="./images/delete.png"
-                        alt="Edit"
-                        onClick={() => handleAppointmentDelete(i)}
-                      />
-                    </div>
-                  </Stack>
-                </div>
-              )}
-            </div>
-          );
-        })}
-        {addAppointment && (
+                  </div>
+                </Stack>
+              </div>
+            )}
+          </div>
+        ))}
+        {isAdding && (
           <div className="appointment-add-datetimepicker">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <MobileDateTimePicker
-                defaultValue={appointment}
-                onChange={(e) => {
-                  setAppointment(e);
-                }}
+                defaultValue={selectedDateTime}
+                onChange={(e) => setSelectedDateTime(e)}
                 sx={{
-                  svg: { color },
-                  input: { color },
-                  label: { color },
+                  svg: { color: "white" },
+                  input: { color: "white" },
+                  label: { color: "white" },
                   border: "1px solid white",
                   borderRadius: "8px",
                   margin: "10px",
@@ -154,8 +140,8 @@ function ClientAppointments({
                 format="DD/MM/YYYY hh:MM:ss"
               />
             </LocalizationProvider>
-            <button onClick={() => handleAppointmentAdd("Add")}>Add</button>
-            <button onClick={() => handleAppointmentAdd("Cancel")}>
+            <button onClick={() => handleAppointmentAction("Add")}>Add</button>
+            <button onClick={() => handleAppointmentAction("Cancel")}>
               Cancel
             </button>
           </div>

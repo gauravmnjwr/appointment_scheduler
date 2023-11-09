@@ -9,8 +9,8 @@ import dayjs from "dayjs";
 import { DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import "./styles.css";
-import { showToastDangerMessage } from "../constants";
+import { showToastDangerMessage } from "../../constants";
+import "../styles.css";
 
 const AddClientModal = ({ open, onClose, onAddClient }) => {
   const [userData, setUserData] = useState({
@@ -55,8 +55,8 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
           left: "50%",
           transform: "translate(-50%, -50%)",
           width: 300,
-          bgcolor: "rgba(137, 255, 196, .7)",
-          border: "2px solid #89ffc4",
+          bgcolor: "#1D1E22",
+          border: "2px solid gray",
           boxShadow: 24,
           color: "white",
           p: 2,
@@ -82,7 +82,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
           margin="normal"
           InputLabelProps={{
             style: {
-              color: "white",
+              color: "gray",
             },
           }}
         />
@@ -102,7 +102,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
           }}
           InputLabelProps={{
             style: {
-              color: "white",
+              color: "gray",
             },
           }}
         />
@@ -122,7 +122,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
           }}
           InputLabelProps={{
             style: {
-              color: "white",
+              color: "gray",
             },
           }}
         />
@@ -138,7 +138,7 @@ const AddClientModal = ({ open, onClose, onAddClient }) => {
               sx={{
                 svg: { color: "white" },
                 input: { color: "white" },
-                label: { color: "white" },
+                label: { color: "gray" },
                 borderRadius: "8px",
                 border: "1px solid white",
               }}
