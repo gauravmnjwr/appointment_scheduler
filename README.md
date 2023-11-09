@@ -2,6 +2,8 @@
 
 Welcome to the Fitness Trainer Appointment Scheduling Website repository! This front-end application is designed to help fitness trainers efficiently manage appointments for their clients. Below, you'll find instructions on how to set up and use the application.
 
+The website is hosted on - [Link](https://fitnessappointment-scheduler.netlify.app/)
+
 ## Table of Contents
 
 1. [Installation](#installation)
