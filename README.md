@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Fitness Trainer Appointment Scheduling Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Fitness Trainer Appointment Scheduling Website repository! This front-end application is designed to help fitness trainers efficiently manage appointments for their clients. Below, you'll find instructions on how to set up and use the application.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Project Structure](#project-structure)
+4. [Functionality](#functionality)
+5. [User Interface](#user-interface)
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To get started with the project, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository to your local machine:
 
-### `npm test`
+   ```bash
+   git clone https://github.com/gauravmnjwr/appointment_scheduler.git
+   ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Change into the project directory:
 
-### `npm run build`
+   ```bash
+   cd appointment_scheduler
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Install dependencies using npm:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+After completing the installation steps, you can start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+OR 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+npm run start
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Visit [http://localhost:3000](http://localhost:3000) in your web browser to access the Fitness Trainer Appointment Scheduling Website.
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project follows a standard structure for a React application. Key directories include:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **src:** Contains the source code of the application.
+- **components:** Reusable React components.
+- **modals:** Contains Modals for direct action.
+- **redux:** Contains the redux store and slices.
 
-### Code Splitting
+## Functionality
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The application provides the following functionality:
 
-### Analyzing the Bundle Size
+- Add, edit, and delete clients to create appointments.
+- Add, edit, and delete appointments for clients.
+- Inline editing of client information (First Name, Last Name, and Location).
+- Inline editing of client appointments (Date and Time).
+- Informative error messages and notifications for successful actions.
+- Calendar page for viewing scheduled appointments.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## User Interface
+The user interface is designed to be modern, responsive, and user-friendly. It features a clean grid layout with editable fields for each client, including the ability to manage multiple appointments.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you.
