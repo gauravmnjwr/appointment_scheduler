@@ -1,0 +1,153 @@
+.error {
+  margin: 5px;
+}
+
+body {
+  background-color: #0f0617;
+  color: white;
+}
+.client_userdetails {
+  /* background-color: aliceblue; */
+  /* display: flex; */
+}
+
+.client_userdetails img {
+  height: 30px;
+  cursor: pointer;
+  /* background-color: aliceblue; */
+}
+
+.appointment-container img {
+  height: 20px;
+  /* background-color: aliceblue; */
+
+  cursor: pointer;
+}
+
+.appointment-container {
+  display: flex;
+}
+
+.client_list > div {
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  /* color: white; */
+  border-radius: 10px;
+  /* background-color: #0f0617; */
+
+  /* -webkit-backdrop-filter: blur(50px);
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 24px 28px; */
+}
+
+.appointment-main {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.appointment-add-datetimepicker {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.client-card {
+  background-color: #0f0617;
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(50px);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 24px 28px;
+  color: white !important;
+}
+
+.client_basicdetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  column-gap: 10px;
+}
+
+.client_basicdetails .basic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.client_basicdetails .loc {
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+div .basic div:nth-child(1) {
+  font-size: 38px;
+  text-transform: uppercase;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+div .basic div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.userdetails_edit input {
+  background: transparent;
+  border: 0px;
+  height: 40px;
+  border-bottom: 1px solid white;
+  margin: 2px;
+  color: white;
+  font-size: 18px;
+}
+
+button {
+  background-color: rgba(255, 255, 255, 0.856);
+  height: 40px;
+  border-radius: 8px;
+  padding: 0px 10px;
+  margin: 2px;
+  cursor: pointer;
+  font-weight: 600;
+  border: 0px;
+}
+
+button:hover {
+  background-color: #0f06171f;
+  border: 1px solid white;
+  color: white;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.appointment-edit-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 7px;
+  mix-blend-mode: multiply;
+}
+
+.addClient-btn {
+  background-color: rgba(255, 255, 255, 0.767) !important;
+  margin-top: 10px !important;
+  color: black !important;
+}
+
+.error {
+  font-size: 12px;
+  margin: 10px !important;
+  color: black;
+}

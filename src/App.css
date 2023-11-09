@@ -1,0 +1,15 @@
+.calender-modal-close-btn {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.calender-modal-close-btn button {
+  height: 20px;
+  font-size: 12px;
+  border: 1px solid gray;
+}
+
+.calender-modal-close-btn button:hover {
+  color: black;
+}
